@@ -5,7 +5,7 @@ __author__ = 'Zhou Ran'
 
 from setuptools import setup, find_packages
 
-setup(name='pysashimiplot',
+setup(name='dlaa',
       version='1.0.0',
       python_requires='>3.6',
       description='DL_Feature',

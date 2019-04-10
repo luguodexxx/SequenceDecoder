@@ -116,7 +116,7 @@ class SeqCrawler:
         self.__fa = pysam.FastaFile(genome_fasta)
 
         self.mtx = self.__getfa()
-        if label:
+        if label != None:
             self.mtx['target'] = label
         else:
             self.mtx['target'] = 'NaN'
@@ -259,13 +259,15 @@ class SeqCrawler:
         _seq = []
         for i in range(sample):
             seq = res[geneid[random.choice(list(range(len(geneid))))]]
-            if "N" in seq:
-                continue
-            if len(seq) < maxlength:
+
+            # if len(seq) <= maxlength:
+            #     continue
+            try:
+                index = random.randrange(_mid, len(seq) - _mid)
+                seq = seq[index - _mid:index + _mid]
+            except:
                 continue
 
-            index = random.randrange(_mid, len(seq) - _mid)
-            seq = seq[index - _mid:index + _mid]
             if "N" in seq:
                 continue
             _seq.append(seq)
